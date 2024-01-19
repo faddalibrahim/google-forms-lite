@@ -17,7 +17,7 @@ export default function NewFormDialog() {
   return (
     <Dialog>
       <DialogTrigger asChild>
-        <Button variant="outline">Create Form</Button>
+        <Button>Create Form</Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
