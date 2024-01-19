@@ -10,7 +10,7 @@ import { Label } from "@/components/ui/label";
 import Link from "next/link"
 
 
-export default function Login() {
+export default function Register() {
   const [isLoading, setIsLoading] = React.useState<boolean>(false);
 
   async function onSubmit(event: React.SyntheticEvent) {
@@ -23,7 +23,7 @@ export default function Login() {
   }
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center px-5">
+    <div className="h-screen flex flex-col items-center justify-center p-5">
       <Link
         href="/"
         className={cn(
@@ -33,26 +33,36 @@ export default function Login() {
       >
         XY Forms
       </Link>
-      <form
-        onSubmit={onSubmit}
-        className="flex flex-col gap-5 w-full md:w-[20vw]"
-      >
+      <form onSubmit={onSubmit} className="flex flex-col gap-5 w-full md:w-[20vw]">
         <center>
           <h1 className="text-2xl font-semibold tracking-tight mb-3">
-            Login to your account
+            Create an account
           </h1>
           <p className="text-sm text-muted-foreground">
-            Enter your email and password below
+            Enter your details below
           </p>
         </center>
         <div className="grid gap-2">
+          <div className="grid gap-1">
+            <Label className="sr-only" htmlFor="username">
+              Username
+            </Label>
+            <Input
+              id="username"
+              placeholder="username"
+              type="text"
+              autoCapitalize="none"
+              autoCorrect="off"
+              disabled={isLoading}
+            />
+          </div>
           <div className="grid gap-1">
             <Label className="sr-only" htmlFor="email">
               Email
             </Label>
             <Input
               id="email"
-              placeholder="name@example.com"
+              placeholder="email"
               type="email"
               autoCapitalize="none"
               autoCorrect="off"
@@ -72,11 +82,24 @@ export default function Login() {
               disabled={isLoading}
             />
           </div>
+          <div className="grid gap-1">
+            <Label className="sr-only" htmlFor="repeat-password">
+              Repeat Password
+            </Label>
+            <Input
+              id="repeat-password"
+              placeholder="repeat password"
+              type="password"
+              autoCapitalize="none"
+              autoCorrect="off"
+              disabled={isLoading}
+            />
+          </div>
           <Button disabled={isLoading}>
             {isLoading && (
               <Icons.spinner className="mr-2 h-4 w-4 animate-spin" />
             )}
-            Login
+            Register
           </Button>
           <div className="relative mt-2">
             <div className="absolute inset-0 flex items-center">
@@ -89,7 +112,7 @@ export default function Login() {
             </div>
           </div>
           <Button variant="outline" type="button" disabled={isLoading}>
-            <Link href="/auth/register">register</Link>
+            <Link href="/auth/login">login</Link>
           </Button>
         </div>
       </form>
