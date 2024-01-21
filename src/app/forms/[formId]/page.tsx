@@ -1,93 +1,54 @@
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
+// ui componentns
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
-export default function Forms() {
+// custom components
+import Questions from "./components/questions/Questions";
+import Responses from "./components/responses/Responses";
+import Settings from "./components/settings/Settings";
+import Appbar from "@/components/custom/Appbar";
+
+export default function Form() {
+  const SUB_PAGES = [
+    {
+      id: "questions",
+      name: "Questions",
+      page: <Questions />,
+    },
+    {
+      id: "responses",
+      name: "Responses",
+      page: <Responses />,
+    },
+    {
+      id: "settings",
+      name: "Settings",
+      page: <Settings />,
+    },
+  ];
+
   return (
-    <Tabs defaultValue="questions" className="w-[800px]">
-      <TabsList className="grid w-full grid-cols-3">
-        <TabsTrigger value="questions">Questions</TabsTrigger>
-        <TabsTrigger value="responses">Responses</TabsTrigger>
-        <TabsTrigger value="settings">Settings</TabsTrigger>
-      </TabsList>
-      <TabsContent value="questions">
-        <Card>
-          <CardHeader>
-            <CardTitle>Account</CardTitle>
-            <CardDescription>
-              Make changes to your account here. 
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="name">Name</Label>
-              <Input id="name" defaultValue="Pedro Duarte" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="username">Username</Label>
-              <Input id="username" defaultValue="@peduarte" />
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button>Save changes</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-      <TabsContent value="responses">
-        <Card>
-          <CardHeader>
-            <CardTitle>Password</CardTitle>
-            <CardDescription>
-              Change your password here. After saving, you will be logged out.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="current">Current password</Label>
-              <Input id="current" type="password" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="new">New password</Label>
-              <Input id="new" type="password" />
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button>Save password</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-      <TabsContent value="settings">
-        <Card>
-          <CardHeader>
-            <CardTitle>Password</CardTitle>
-            <CardDescription>
-              Change your password here. After saving, you'll be logged out.
-            </CardDescription>
-          </CardHeader>
-          <CardContent className="space-y-2">
-            <div className="space-y-1">
-              <Label htmlFor="current">Current password</Label>
-              <Input id="current" type="password" />
-            </div>
-            <div className="space-y-1">
-              <Label htmlFor="new">New password</Label>
-              <Input id="new" type="password" />
-            </div>
-          </CardContent>
-          <CardFooter>
-            <Button>Save password</Button>
-          </CardFooter>
-        </Card>
-      </TabsContent>
-    </Tabs>
+    <div className="flex flex-col justify-between items-center bg-gray-50 h-screen gap-2">
+      <Appbar />
+      <div className="w-screen flex justify-center grow">
+        <Tabs defaultValue="questions" className="w-[800px]">
+          <TabsList className="grid w-full grid-cols-3">
+            {SUB_PAGES.map((PAGE) => (
+              <TabsTrigger value={PAGE.id} key={PAGE.id}>
+                {PAGE.name}
+              </TabsTrigger>
+            ))}
+          </TabsList>
+          {SUB_PAGES.map((PAGE) => (
+            <TabsContent
+              value={PAGE.id}
+              key={PAGE.id}
+              className="bg-white grow p-4"
+            >
+              {PAGE.page}
+            </TabsContent>
+          ))}
+        </Tabs>
+      </div>
+    </div>
   );
 }
