@@ -24,8 +24,8 @@ export default function Register() {
 
   return (
     <div className="h-screen flex flex-col items-center justify-center p-5">
-      <Link
-        href="/"
+                          <Link
+                    href="/"
         className={cn(
           buttonVariants({ variant: "ghost" }),
           "absolute right-4 top-4 md:right-8 md:top-8"
@@ -33,7 +33,7 @@ export default function Register() {
       >
         XY Forms
       </Link>
-      <form onSubmit={onSubmit} className="flex flex-col gap-5 w-full md:w-[20vw]">
+      <       form onSubmit={onSubmit} className="flex flex-col gap-5 w-full md:w-[20vw]">
         <center>
           <h1 className="text-2xl font-semibold tracking-tight mb-3">
             Create an account
