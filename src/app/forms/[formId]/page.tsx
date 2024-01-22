@@ -27,10 +27,12 @@ export default function Form() {
   ];
 
   return (
-    <div className="flex flex-col justify-between items-center bg-gray-50 h-screen gap-2">
-      <Appbar />
-      <div className="w-screen flex justify-center grow">
-        <Tabs defaultValue="questions" className="w-[800px]">
+    <div className="flex flex-col justify-between items-center bg-gray-50 h-screen overflow-y-hidden">
+      <div>
+        <Appbar />
+      </div>
+      <div className="w-screen flex justify-center grow h-full">
+        <Tabs defaultValue="questions" className="w-screen">
           <TabsList className="grid w-full grid-cols-3">
             {SUB_PAGES.map((PAGE) => (
               <TabsTrigger value={PAGE.id} key={PAGE.id}>
@@ -42,7 +44,7 @@ export default function Form() {
             <TabsContent
               value={PAGE.id}
               key={PAGE.id}
-              className="bg-white grow p-4"
+              className="bg-white grow p-4 overflow-scroll h-full"
             >
               {PAGE.page}
             </TabsContent>
