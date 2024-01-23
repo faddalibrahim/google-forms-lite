@@ -11,28 +11,86 @@ import Appbar from "@/components/custom/Appbar";
 import { useState } from "react";
 
 export default function Form() {
-  const [questions, setQuestions] = useState<any>([
-    {
-      id: "question-1",
-      question: "What is your name",
-      type: "text",
-      options: [],
-      required: true,
-      placeholder: "Enter your name",
-      description: "Enter your name",
-      name: "name",
-      value: "",
-      errors: [],
-      validation: "required",
-      disabled: false,
-    },
+  const [sections, setSections] = useState<any>([
+    [
+      {
+        id: "question-1",
+        question: "What is your name",
+        type: "text",
+        options: [],
+        required: true,
+        placeholder: "Enter your name",
+        description: "Enter your name",
+        name: "name",
+        value: "",
+        errors: [],
+        validation: "required",
+        disabled: false,
+      },
+      {
+        id: "question-2",
+        question: "Bio",
+        type: "text",
+        options: [],
+        required: true,
+        placeholder: "Enter your name",
+        description: "Enter your name",
+        name: "name",
+        value: "",
+        errors: [],
+        validation: "required",
+        disabled: false,
+      },
+      {
+        id: "question-1",
+        question: "What is your name",
+        type: "text",
+        options: [],
+        required: true,
+        placeholder: "Enter your name",
+        description: "Enter your name",
+        name: "name",
+        value: "",
+        errors: [],
+        validation: "required",
+        disabled: false,
+      },
+      {
+        id: "question-2",
+        question: "Bio",
+        type: "text",
+        options: [],
+        required: true,
+        placeholder: "Enter your name",
+        description: "Enter your name",
+        name: "name",
+        value: "",
+        errors: [],
+        validation: "required",
+        disabled: false,
+      },
+      {
+        id: "question-2",
+        question: "Bio",
+        type: "text",
+        options: [],
+        required: true,
+        placeholder: "Enter your name",
+        description: "Enter your name",
+        name: "name",
+        value: "",
+        errors: [],
+        validation: "required",
+        disabled: false,
+      },
+    ],
   ]);
 
   const SUB_PAGES = [
     {
       id: "questions",
       name: "Questions",
-      page: <Questions questions={questions} setQuestions={setQuestions}/>,
+      page: <Questions sections={sections} setSections={setSections} />,
     },
     {
       id: "responses",
@@ -47,11 +105,11 @@ export default function Form() {
   ];
 
   return (
-    <div className="flex flex-col justify-between bg-gradient-to-r from-purple-50 to-pink-50 h-screen overflow-hidden">
+    <div className="flex flex-col justify-between bg-gray-100 h-screen overflow-hidden">
       <Appbar />
       <Tabs
         defaultValue="questions"
-        className="w-screen grow h-full flex flex-col justify-between items-center"
+        className="w-screen grow h-full flex flex-col justify-between items-center px-2 mt-2 rounded-lg relative z-10"
       >
         <TabsList className="grid w-full md:w-[50vw] grid-cols-3">
           {SUB_PAGES.map((PAGE) => (
@@ -65,7 +123,7 @@ export default function Form() {
             <TabsContent
               value={PAGE.id}
               key={PAGE.id}
-              className="bg-white p-5 w-full md:w-[50vw] mx-auto"
+              className="w-full md:w-[50vw] mx-auto"
             >
               {PAGE.page}
             </TabsContent>
