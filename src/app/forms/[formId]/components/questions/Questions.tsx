@@ -81,25 +81,6 @@ export default function Questions({ sections, setSections }: any) {
                       ]}
                     />
                   }
-
-                  {/* <Select>
-                    <SelectTrigger className="w-[180px]">
-                      <SelectValue placeholder="Theme" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="short answer">short answer</SelectItem>
-                      <SelectItem value="paragraph">paragraph</SelectItem>
-                      <SelectItem value="multiple choice">
-                        multiple choice
-                      </SelectItem>
-                      <SelectItem value="checkboxes">checkboxes</SelectItem>
-                      <SelectItem value="dropdown">dropdown</SelectItem>
-                      <SelectItem value="sate">date</SelectItem>
-                      <SelectItem value="time">time</SelectItem>
-                      <SelectItem value="linear scale">linear scale</SelectItem>
-                      <SelectItem value="file upload">file upload</SelectItem>
-                    </SelectContent>
-                  </Select> */}
                 </div>
               </div>
             ))}
